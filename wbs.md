@@ -1,0 +1,244 @@
+---
+layout: default
+title: RTwP RPG — WBS
+permalink: /wbs/
+---
+
+# RTwP RPG — WBS (Work Breakdown Structure)
+<!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
+> 최종 업데이트: 2026-06-01
+
+범례: ✅ 완료 | ⬜ 진행 예정
+
+---
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **1** | **Stage 0: 프로젝트 기반** | ✅ | 04-05 |
+| 1.1 | RTwP 시간 제어 시스템 | ✅ | 04-05 |
+| 1.1.1 | TimeFlowManager | ✅ | 04-05 |
+| 1.1.2 | InitiativeQueue | ✅ | 04-05 |
+| 1.2 | 기본 전투 구조 | ✅ | 04-05 |
+| 1.2.1 | 파티 & 적 시스템 골격 | ✅ | 04-05 |
+| 1.2.2 | 스테이지 / 웨이브 구조 | ✅ | 04-05 |
+| **2** | **Stage 1: 전투 기반** | ✅ | 04-09 |
+| 2.1 | 데이터 아키텍처 | ✅ | 04-09 |
+| 2.1.1 | StatModifier 파이프라인 | ✅ | 04-09 |
+| 2.1.2 | SkillData ScriptableObject | ✅ | 04-09 |
+| 2.1.3 | EquipmentData ScriptableObject | ✅ | 04-09 |
+| 2.2 | 전투 판정 시스템 | ✅ | 04-09 |
+| 2.2.1 | PositioningCalculator (배후/측면 보너스) | ✅ | 04-09 |
+| 2.2.2 | CombatCalculator (커버 방어 보정) | ✅ | 04-09 |
+| 2.3 | 상태이상 시스템 | ✅ | 04-09 |
+| 2.3.1 | UnitStatusHandler (6종 스택/갱신 혼합) | ✅ | 04-09 |
+| 2.4 | 적 AI 시스템 | ✅ | 04-09 |
+| 2.4.1 | EnemyAI FSM (Idle/Chase/Attack/Retreat) | ✅ | 04-09 |
+| 2.5 | 비주얼 피드백 | ✅ | 04-09 |
+| 2.5.1 | SpriteCharacterView 애니메이션 컨트롤러 | ✅ | 04-09 |
+| 2.5.2 | DamagePopupManager | ✅ | 04-09 |
+| **3** | **Stage 2: 캐릭터 심화** | ✅ | 04-11 |
+| 3.1 | 캐릭터 성장 시스템 | ✅ | 04-11 |
+| 3.1.1 | ClassData & 전직 시스템 | ✅ | 04-11 |
+| 3.1.2 | SkillTreeComponent | ✅ | 04-11 |
+| 3.1.3 | InventoryComponent | ✅ | 04-11 |
+| 3.2 | 전투 심화 메커니즘 | ✅ | 04-11 |
+| 3.2.1 | APRecoveryHandler | ✅ | 04-11 |
+| 3.2.2 | Dodge / Parry 판정 | ✅ | 04-11 |
+| 3.3 | 전투 전 UI | ✅ | 04-11 |
+| 3.3.1 | PreBattleScreen | ✅ | 04-11 |
+| 3.3.2 | SkillDeckUI (A/B 토글) | ✅ | 04-11 |
+| 3.3.3 | InventoryUI | ✅ | 04-11 |
+| **4** | **Stage 3: 월드 & 콘텐츠 확장** | ✅ | 04-12 |
+| 4.1 | 지형 시스템 | ✅ | 04-12 |
+| 4.1.1 | TerrainTileData & GridManager | ✅ | 04-12 |
+| 4.1.2 | AStarPathfinder (이동 비용 + Obstacle) | ✅ | 04-12 |
+| 4.2 | 보스 & 적 AI 확장 | ✅ | 04-12 |
+| 4.2.1 | BossController (페이즈 전환) | ✅ | 04-12 |
+| 4.2.2 | EnemyAI Archetype (MeleeRush/Sniper/AoE/Healer) | ✅ | 04-12 |
+| 4.3 | 거점 방어 시스템 | ✅ | 04-12 |
+| 4.3.1 | DefendPointController | ✅ | 04-12 |
+| 4.3.2 | 승패 조건 7종 | ✅ | 04-12 |
+| 4.4 | 허브 & 진행 시스템 | ✅ | 04-12 |
+| 4.4.1 | LootManager & DropTable | ✅ | 04-12 |
+| 4.4.2 | DifficultyScaler & ChapterProgressData | ✅ | 04-12 |
+| 4.4.3 | ChapterHubScreen | ✅ | 04-12 |
+| **5** | **Stage 4: 스토리 & 진행 시스템** | ✅ | 04-16 |
+| 5.1 | 데이터 저장 시스템 | ✅ | 04-16 |
+| 5.1.1 | SaveData & SaveLoadService | ✅ | 04-16 |
+| 5.1.2 | GameManager (씬 전환 & 챕터 진행) | ✅ | 04-16 |
+| 5.2 | 스토리 시스템 | ✅ | 04-16 |
+| 5.2.1 | DialogueData & DialoguePlayer | ✅ | 04-16 |
+| 5.2.2 | ChapterData & MissionConfig SO | ✅ | 04-16 |
+| 5.3 | 경제 시스템 | ✅ | 04-16 |
+| 5.3.1 | ShopData & ShopScreen | ✅ | 04-16 |
+| 5.4 | 결과 & 설정 UI | ✅ | 04-16 |
+| 5.4.1 | BattleResultScreen | ✅ | 04-16 |
+| 5.4.2 | EndingResultScreen | ✅ | 04-16 |
+| 5.4.3 | SaveSlotPanel & SettingsPanel | ✅ | 04-16 |
+| **6** | **Stage 5: 폴리싱** | ✅ | 05-16 |
+| 6.1 | UI/UX 품질 시스템 | ✅ | 04-24 |
+| 6.1.1 | TooltipSystem & ITooltipProvider | ✅ | 04-24 |
+| 6.1.2 | ScreenFader (씬 전환 페이드) | ✅ | 04-24 |
+| 6.1.3 | CursorManager (컨텍스트 커서) | ✅ | 04-24 |
+| 6.2 | 사운드 시스템 | ✅ | 04-25 |
+| 6.2.1 | AudioManager (BGM 크로스페이드 + SFX 풀) | ✅ | 04-25 |
+| 6.2.2 | AudioConfig 에셋 (19종 클립 매핑) | ✅ | 04-25 |
+| 6.3 | VFX 시스템 | ✅ | 04-25 |
+| 6.3.1 | VFXManager (파티클 풀) | ✅ | 04-25 |
+| 6.3.2 | VFX 파티클 프리팹 5종 | ✅ | 04-25 |
+| 6.4 | 상태이상 비주얼 | ✅ | 04-25 |
+| 6.4.1 | UnitStatusView | ✅ | 04-25 |
+| 6.4.2 | PartyMemberHUD 상태이상 패널 | ✅ | 04-25 |
+| 6.5 | 환경 연출 시스템 | ✅ | 04-25 |
+| 6.5.1 | EnvironmentManager (Rain/Fog/Fire) | ✅ | 04-25 |
+| 6.6 | 튜토리얼 시스템 | ✅ | 05-14 |
+| 6.6.1 | TutorialManager (4단계 시퀀서) | ✅ | 04-29 |
+| 6.6.2 | TutorialOverlay (스포트라이트 + 말풍선) | ✅ | 04-29 |
+| 6.6.3 | Tutorial.unity 씬 | ✅ | 05-14 |
+| 6.7 | 리플레이 시스템 | ✅ | 05-14 |
+| 6.7.1 | BattleRecorder & ReplayPlayer | ✅ | 05-14 |
+| 6.7.2 | Replay.unity 씬 | ✅ | 05-14 |
+| 6.8 | 한글 폰트 & 성능 | ✅ | 05-15 |
+| 6.8.1 | NanumGothic TMP Dynamic Asset | ✅ | 05-15 |
+| 6.8.2 | DamagePopupManager 오브젝트 풀 | ✅ | 05-15 |
+| 6.9 | 전투 UI | ✅ | 05-16 |
+| 6.9.1 | SkillPanel (이동/대기/스킬 버튼) | ✅ | 05-16 |
+| 6.9.2 | SelectionRing | ✅ | 05-16 |
+| 6.9.3 | TargetIndicator | ✅ | 05-16 |
+| **7** | **마무리: 코드 수정 & 빌드 검증** | ✅ | 05-22 |
+| 7.1 | 코드 품질 버그 패치 (20건, H-1~H-20) | ✅ | 05-20 |
+| 7.2 | 고정 틱 시뮬레이션 마이그레이션 | ✅ | 05-20 |
+| 7.2.1 | 기반 파일 (ActionPhase / UnitSimState / CommandQueue / BattleSimulation) | ✅ | 05-20 |
+| 7.2.2 | UnitController 확장 + UnitCombatAction 상태머신 | ✅ | 05-20 |
+| 7.2.3 | 의존 시스템 Tick 전환 + TimeFlowManager Facade + BattleRecorder | ✅ | 05-20 |
+| 7.2.4 | 전투 씬 회귀 테스트 결과 | ✅ | 05-22 |
+| 7.3 | 최종 검증 산출물 | ✅ | 05-22 |
+| 7.3.1 | 씬 플로우 테스트 결과 | ✅ | 05-22 |
+| 7.3.2 | Windows Standalone 빌드 | ✅ | 05-22 |
+| 7.4 | 고심각도 버그 패치 (H-5~H-11) | ✅ | 05-22 |
+| 7.4.1 | StageRunner SpawnEnemy EnemyAI 중복 AddComponent 방지 (H-5) | ✅ | 05-22 |
+| 7.4.2 | BattleSimulation accumulator unscaledDeltaTime 전환 (H-6) | ✅ | 05-22 |
+| 7.4.3 | Sustained 스킬 PendingTimeCost 불일치 패치 (H-7) | ✅ | 05-22 |
+| 7.4.4 | TryExecutePendingSkill 실패 시 _pendingSkill 유지 + RefreshButtons 갱신 (H-9, H-10) | ✅ | 05-22 |
+| 7.4.5 | CommandQueue 이중 소비 제거 — Update 단일 경로 통합 (H-11) | ✅ | 05-22 |
+| 7.5 | 중간 심각도 버그 패치 (12건, M-1~M-12) | ✅ | 05-22 |
+| 7.6 | 낮은 심각도 버그 패치 (7건, L-A2/A4/B1/B4/C1~C4) | ✅ | 05-22 |
+| 7.7 | 타겟팅·색상 버그 근본 패치 | ✅ | 05-27 |
+| 7.7.1 | BattleInputHandler 스킬/이동 발행 후 Deselect 제거 → 적 재타겟팅 가능 | ✅ | 05-27 |
+| 7.7.2 | UnitCombatAction.IsBusy — CommandQueue HasCommandFor 포함 | ✅ | 05-27 |
+| 7.7.3 | UnitCombatAction.StartAction 진입 시 SetHighlight(true) | ✅ | 05-27 |
+| 7.7.4 | PartyManager.SelectUnit IsBusy 체크 — 행동 중 노랑 덮어쓰기 방지 | ✅ | 05-27 |
+| 7.7.5 | SkillPanel.RefreshButtons 이동/대기 버튼 interactable 갱신 | ✅ | 05-27 |
+| 7.8 | KillEnemy 튜토리얼 스텝 | ✅ | 05-27 |
+| 7.8.1 | EnemyHPBar WorldSpace Canvas 컴포넌트 | ✅ | 05-27 |
+| 7.8.2 | TutorialManager KillEnemy 스텝 + ChapterHub 이동 | ✅ | 05-27 |
+| 7.8.3 | GameManager.NewGame() tutorialDone 분기 | ✅ | 05-27 |
+| 7.8.4 | Step_KillEnemy SO + Enemy_Basic HPBarCanvas 프리팹 + Tutorial 씬 연결 | ✅ | 05-27 |
+| 7.9 | 튜토리얼 플레이어빌리티 패치 | ✅ | 05-29 |
+| 7.9.1 | Char_TutorialEnemy maxHP 50→200 (원샷 방지) | ✅ | 05-29 |
+| 7.9.2 | SpriteCharacterView OnUnitDied 구독 — 사망 시 회색+페이드 | ✅ | 05-29 |
+| 7.9.3 | EnemyHPBar fillAmount→anchorMax.x 방식 전환 | ✅ | 05-29 |
+| 7.9.4 | Enemy_Basic HPBarCanvas sizeDelta (80,8)→(200,16) | ✅ | 05-29 |
+| 7.9.5 | TutorialManager GameManager null 시 SceneManager fallback | ✅ | 05-29 |
+| 7.9.6 | ChapterHubController — 씬 전환 시 ChapterHubScreen.Open() 자동 호출 | ✅ | 05-29 |
+| **8.0** | **콘텐츠: 맵·허브 UI** | ✅ | 05-30 |
+| 8.0.1 | Tutorial 씬 맵 — 10×8 잔디+돌 테두리, 나무·덤불 장식 | ✅ | 05-30 |
+| 8.0.2 | ChapterHub UI — 헤더·임무목록·상세패널·출격버튼 + MissionSlot 프리팹 | ✅ | 05-30 |
+| 8.0.3 | Battle 씬 맵 — 10×8 잔디+돌 테두리, 나무·덤불 장식 | ✅ | 05-30 |
+| **8.1** | **GameManager·PartyManager 연동** | ✅ | 05-30 |
+| 8.1.1 | GameManager.InitDefaultParty() — 새 게임 시 partyMembers 초기화 | ✅ | 05-30 |
+| 8.1.2 | GameManager.FindCharacter(id) — GameAssets 캐릭터 검색 공개 접근자 | ✅ | 05-30 |
+| 8.1.3 | PartyManager.SpawnParty() SaveData 기반 스폰 + Inspector fallback | ✅ | 05-30 |
+| 8.1.4 | UnitStats.SetCurrentHP(int) — 저장된 HP 복원 세터 | ✅ | 05-30 |
+| **8.2** | **콘텐츠 연결 작업** | ✅ | 05-30 |
+| 8.2.1 | GameAssets.allCharacters 스킬 연결 (Vanguard/Midguard/Rearguard) | ✅ | 05-30 |
+| 8.2.2 | Ending 씬 UI | ✅ | 05-30 |
+| 8.2.3 | 캐릭터 스프라이트/애니메이터 연결 (Unit_Animator + TX Player portrait) | ✅ | 05-30 |
+| 8.2.4 | 장비 6종 SO + DropTable Ch1 연결 + GameAssets 등록 | ✅ | 05-30 |
+| 8.2.5 | ShopScreen + SaveSlotPanel UI + ShopData_Ch1 에셋 | ✅ | 05-30 |
+| **9.0** | **엔드-투-엔드 플레이어빌리티 패치 1차** | ✅ | 05-30 |
+| 9.0.1 | StageRunner LootManager 적 사망 훅 — 골드·장비 드롭 활성화 | ✅ | 05-30 |
+| 9.0.2 | GameManager.OnBattleWon 파티 HP 저장 — 씬 전환 후 HP 유지 | ✅ | 05-30 |
+| 9.0.3 | BalanceConfig.startingGold + InitDefaultParty 초기 골드 | ✅ | 05-30 |
+| 9.0.4 | ChapterHubController.CheckChapterFailed — 소프트락 방지 | ✅ | 05-30 |
+| 9.0.5 | ChapterHubScreen txtGold UI — 골드 표시 | ✅ | 05-30 |
+| 9.0.6 | BattleResultScreen UI 재구성 — 전투 결과 화면 | ✅ | 05-30 |
+| **10.0** | **코드 리뷰 반영 패치** | ✅ | 05-31 |
+| 10.0.1 | EventBus._snapshot 풀 기반 재진입 안전 구조 | ✅ | 05-31 |
+| 10.0.2 | BattleManager.cs 삭제 + Stage_01 씬 정리 | ✅ | 05-31 |
+| 10.0.3 | GameManager.FadeAndLoad EventBus.Clear — 씬 전환 리스너 정리 | ✅ | 05-31 |
+| 10.0.4 | SaveLoadService 세이브 파일 삭제 전 LogError | ✅ | 05-31 |
+| 10.0.5 | GameManager.NewGame clueGaugePerChapter 동적 결정 | ✅ | 05-31 |
+| 10.0.6 | BattleResultScreen 주석 정정 | ✅ | 05-31 |
+| 10.0.7 | StageRunner.SpawnEnemy Resources.Load Dictionary 캐시 | ✅ | 05-31 |
+| 10.0.8 | TimeFlowManager.ActiveActionCount 제거 + TimeFlowHUD 정리 | ✅ | 05-31 |
+| **11.0** | **허브-전투 씬 연동 구조** | ✅ | 05-31 |
+| 11.0.1 | StageRunner.OnMissionSelectedFromHub GameManager.GetCurrentChapter() 우선 사용 | ✅ | 05-31 |
+| 11.0.2 | DifficultyScaler.GenerateSpawns chapter null 방어 | ✅ | 05-31 |
+| 11.0.3 | StageRunner.OnMissionSelectedFromHub EliminateAll + PartyWipe 승패 조건 | ✅ | 05-31 |
+| 11.0.4 | Battle.unity PartyManager.partyMemberPrefab 연결 | ✅ | 05-31 |
+| 11.0.5 | Battle.unity StageRunner.chapterData 연결 (ChapterData_Ch1) | ✅ | 05-31 |
+| **12.0** | **StageConfig 웨이브 스테이지 시스템** | ✅ | 05-31 |
+| 12.0.1 | StageConfig SO (stageId/waves/WaveConfig/SpawnEntry/WinConditionType/WaveTrigger) | ✅ | 05-31 |
+| 12.0.2 | WaveRunner MonoBehaviour + WaveRunnerClearCondition | ✅ | 05-31 |
+| 12.0.3 | ChapterData.stages StageConfig[] (MissionConfig[] 하위 호환 유지) | ✅ | 05-31 |
+| 12.0.4 | ChapterProgressData StageConfig 오버로드 | ✅ | 05-31 |
+| 12.0.5 | StageRunner PendingStage 경로 + OnStageSelectedFromHub + SpawnEntryFromStage | ✅ | 05-31 |
+| 12.0.6 | GameManager PendingStage + LoadBattle(StageConfig) + OnBattleWon(StageConfig) | ✅ | 05-31 |
+| 12.0.7 | ChapterHubScreen StageConfig 슬롯 표시 | ✅ | 05-31 |
+| 12.0.8 | Stage_Ch1_M1_Patrol / M2_Ambush / M3_Investigate 에셋 + ChapterData 등록 | ✅ | 05-31 |
+| 12.0.9 | 스테이지 제작 가이드 (docs/guides/stage-creation-guide.md) | ✅ | 05-31 |
+| **13.0** | **전투 결과 화면** | ✅ | 05-31 |
+| 13.0.1 | StageRunner.Update() 승패 폴링 — BattleSimulation 일시정지 무관 | ✅ | 05-31 |
+| 13.0.2 | BattleResultScreen GO 비활성 유지 + ShowResult 정적 메서드 + FindObjectOfType 폴백 | ✅ | 05-31 |
+| 13.0.3 | BattleResultScreen 카드 UI — txtTitle/btnReplay + 네이비 카드+골드 아웃라인 | ✅ | 05-31 |
+| 13.0.4 | GameManager.OnBattleWonCore CurrentSave null 폴백 | ✅ | 05-31 |
+| **14.0** | **허브 UI 리디자인** | ✅ | 05-31 |
+| 14.0.1 | ChapterHub 헤더 — IbarraRealNova-SemiBold 챕터 제목, Jost-SemiBold 스탯, 아이콘 버튼 | ✅ | 05-31 |
+| 14.0.2 | ChapterHub 패널 — Outline 컴포넌트, 임무목록/출격정보 라벨 스타일 | ✅ | 05-31 |
+| 14.0.3 | 상점/저장 버튼 DarkBackground 아이콘 스프라이트 | ✅ | 05-31 |
+| 14.0.4 | 출격 버튼 레드-오렌지 강조색 + Outline | ✅ | 05-31 |
+| 14.0.5 | MissionSlot 프리팹 다크 스타일 통일 | ✅ | 05-31 |
+| **15.0** | **ADR 문서화 & 아키텍처 정비** | ✅ | 05-31 |
+| 15.0.1 | ADR-0006: StageConfig + WaveRunner 시스템 | ✅ | 05-31 |
+| 15.0.2 | ADR-0007: ChapterHub 별도 씬 구조 | ✅ | 05-31 |
+| 15.0.3 | ADR-0008: StageRunner.Update() 승패 폴링 | ✅ | 05-31 |
+| 15.0.4 | ADR-0009: Modern GDR + Cainos UI 아트 방향 | ✅ | 05-31 |
+| 15.0.5 | ADR-0010: 코루틴 → 20 TPS 고정 틱 시뮬레이션 전환 | ✅ | 05-31 |
+| 15.0.6 | CLAUDE.md ADR 지침 강화 | ✅ | 05-31 |
+| **16.0** | **플레이어빌리티 버그 패치 2차** | ✅ | 05-31 |
+| 16.0.1 | StageRunner EventBus OnUnitDied → LootManager.OnEnemyDefeated 연결 | ✅ | 05-31 |
+| 16.0.2 | GameManager.OnBattleWonCore 전투 후 파티 HP SaveData 동기화 | ✅ | 05-31 |
+| 16.0.3 | GameManager.InitDefaultParty BalanceConfig.startingGold 초기 골드 | ✅ | 05-31 |
+| 16.0.4 | ChapterHubController.Start CheckChapterFailed() — 소프트락 방지 | ✅ | 05-31 |
+| 16.0.5 | ChapterHubScreen txtGold + RefreshHeader() 골드 표시 | ✅ | 05-31 |
+| **17.0** | **플레이어빌리티 버그 패치 3차** | ✅ | 06-01 |
+| 17.0.1 | EliminateAllEnemiesCondition _hadEnemies 플래그 패치 | ✅ | 06-01 |
+| 17.0.2 | AudioManager 씬별 BGM 미매핑 StopBgm() 패치 | ✅ | 06-01 |
+| 17.0.3 | AudioManager SceneManager.sceneLoaded 재구독 패치 | ✅ | 06-01 |
+| 17.0.4 | ChapterHubController StopAll() 허브 진입 오디오 즉시 정지 처리 | ✅ | 06-01 |
+| 17.0.5 | DifficultyScaler 적 스폰 안전 구역 — 맵 상단 절반 | ✅ | 06-01 |
+| 17.0.6 | StageRunner.SpawnEntryFromStage 맵 경계 클램핑 | ✅ | 06-01 |
+| 17.0.7 | IsometricYSort sortingOrder 오프셋 1000 패치 | ✅ | 06-01 |
+| 17.0.8 | Stage_Ch1 아처 스폰 엔트리 삭제 | ✅ | 06-01 |
+| 17.0.9 | ChapterData_Ch1 챕터명 "테스트" | ✅ | 06-01 |
+| 17.0.10 | SpriteCharacterView DeathFade 후 GameObject Destroy 패치 | ✅ | 06-01 |
+| **17.1** | **ADR 소급 문서화** | ✅ | 06-01 |
+| 17.1.1 | ADR-0011: EventBus.Clear() DontDestroyOnLoad 싱글턴 재구독 패턴 | ✅ | 06-01 |
+| 17.1.2 | ADR-0012: EliminateAllEnemiesCondition _hadEnemies 플래그 설계 | ✅ | 06-01 |
+| 17.1.3 | ADR-0001 파생결정 링크 정정 | ✅ | 06-01 |
+
+---
+
+## 위험 관리
+
+> 실제 개발 중 발생했거나 재발 가능한 위험 목록. 경험 기반으로 작성.
+
+| # | 카테고리 | 위험 | 실제 발생 | 대응 |
+|---|---------|------|----------|------|
+| R-1 | 기술 | Inspector 직렬화 누락 — 빌드에서만 나타나는 null 참조 버그 | ✅ 발생 (SpriteCharacterView._spriteRenderer {fileID:0}, TutorialOverlay NextButton) | Awake()에서 GetComponentInChildren fallback 추가. 빌드 후 즉시 Console 확인 |
+| R-2 | 기술 | EventBus.Clear() 사이드이펙트 — DontDestroyOnLoad 싱글턴 이벤트 수신 단절 | ✅ 발생 (AudioManager 씬 전환 후 BGM/SFX 무반응) | SceneManager.sceneLoaded에서 Off→On 재구독 패턴 적용 (ADR-0011) |
+| R-3 | 기술 | 적 스폰 위치 오류 — 카메라 밖 또는 아군 구역 스폰 | ✅ 발생 (DifficultyScaler y=0~2 아군 구역, Stage 에셋 y=6 화면 밖) | 스폰 좌표 맵 상단 절반 클램핑. 스테이지 에셋 검수 절차 추가 |
+| R-4 | 기술 | 조건 판정 타이밍 — IsPaused 상태에서 클리어 조건 미체크 | ✅ 발생 (EliminateAllEnemiesCondition Count==0 가드 버그 반복) | Update() 폴링으로 BattleSimulation과 독립 (ADR-0008). _hadEnemies 플래그 도입 (ADR-0012) |
+| R-5 | 기술 | 에셋 스프라이트 슬라이싱 오류 — 투명 셀 참조로 유닛 불가시 | ✅ 발생 (Cainos banditCrossbowM2 스프라이트 95% 투명) | 신규 에셋 임포트 시 스프라이트 opaque pixel 비율 확인. 대체 표현(UnitCircle) 준비 |
+| R-6 | 일정 | 특정 시스템 마이그레이션 공수 과소 추정 | ✅ 발생 (코루틴→고정 틱 전환 약 1주 소요) | 마이그레이션 전 ADR 작성 + Phase 분리 계획 필수 (ADR-0010) |
