@@ -1,22 +1,227 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>RTwP RPG 아키텍처</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RTwP RPG — 프로젝트 발표</title>
+
+<!-- GitHub 마크다운 스타일 (다크) -->
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-dark.min.css">
+
+<style>
+:root{
+  --gh-bg:#0d1117;
+  --gh-canvas:#0d1117;
+  --gh-border:#30363d;
+  --gh-muted:#8b949e;
+  --gh-accent:#58a6ff;
+  --gh-fg:#e6edf3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  background:var(--gh-bg);
+  color:var(--gh-fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+
+/* 상단 바 — github repo 헤더 느낌 */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;gap:10px;
+  padding:12px 22px;border-bottom:1px solid var(--gh-border);
+  background:#161b22;
+}
+.topbar .repo{font-size:14px;color:var(--gh-fg)}
+.topbar .repo b{font-weight:600}
+.topbar .repo .slash{color:var(--gh-muted);margin:0 4px}
+.topbar .file{
+  margin-left:14px;font-size:13px;color:var(--gh-muted);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+.topbar .spacer{flex:1}
+.topbar .pager{font-size:12px;color:var(--gh-muted);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+.topbar .pager b{color:var(--gh-fg)}
+
+/* 본문 컨테이너 */
+.stage{max-width:1000px;margin:0 auto;padding:28px 22px 96px}
+.doc-frame{
+  border:1px solid var(--gh-border);border-radius:8px;overflow:hidden;
+  background:var(--gh-canvas);
+}
+.doc-head{
+  padding:10px 16px;border-bottom:1px solid var(--gh-border);background:#161b22;
+  font-size:12px;color:var(--gh-muted);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  display:flex;align-items:center;gap:8px;
+}
+.doc-head .dot{width:9px;height:9px;border-radius:50%;background:#3fb950}
+.markdown-body{
+  box-sizing:border-box;padding:32px 40px;background:var(--gh-canvas);
+  min-height:200px;
+}
+.markdown-body .mermaid{
+  display:flex;justify-content:center;background:transparent;margin:18px 0;
+}
+.markdown-body .mermaid svg{max-width:100%;height:auto}
+.loading,.error{
+  padding:40px;text-align:center;color:var(--gh-muted);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;
+}
+.error{color:#f85149;line-height:1.7}
+
+/* 하단 네비 */
+.nav{
+  position:fixed;left:0;right:0;bottom:0;z-index:20;
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  padding:14px;border-top:1px solid var(--gh-border);background:#161b22;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 14px;border:1px solid var(--gh-border);border-radius:6px;
+  background:#21262d;color:var(--gh-fg);font-size:13px;cursor:pointer;
+  font-family:inherit;transition:.15s;
+}
+.btn:hover:not(:disabled){background:#30363d;border-color:#8b949e}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.primary{background:#238636;border-color:#2ea043}
+.btn.primary:hover:not(:disabled){background:#2ea043}
+.tabs{display:flex;gap:6px}
+.tab{
+  padding:6px 12px;border:1px solid transparent;border-radius:6px;
+  background:transparent;color:var(--gh-muted);font-size:13px;cursor:pointer;
+  font-family:inherit;transition:.15s;
+}
+.tab:hover{color:var(--gh-fg);background:#21262d}
+.tab.active{color:var(--gh-fg);background:#21262d;border-color:var(--gh-border)}
+</style>
 </head>
 <body>
-  <h2>RTwP 전투 루프</h2>
-  <pre class="mermaid">
-flowchart TD
-    Start([Update 매 프레임]) --> CQ[1. CommandQueue 처리]
-    CQ --> Check{IsPaused false?}
-    Check -->|Yes| Acc[accumulator += dt]
-    Check -->|No| Interp[Interpolate 보간]
-  </pre>
 
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
-  </script>
+<div class="topbar">
+  <span class="repo"><b>llabrynth</b><span class="slash">/</span><b>llabrynth.github.io</b></span>
+  <span class="file" id="cur-file">—</span>
+  <span class="spacer"></span>
+  <span class="pager"><b id="cur-idx">1</b> / <span id="total-idx">—</span></span>
+</div>
+
+<div class="stage">
+  <div class="doc-frame">
+    <div class="doc-head"><span class="dot"></span><span id="doc-name">README.md</span></div>
+    <article class="markdown-body" id="content">
+      <div class="loading">불러오는 중…</div>
+    </article>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="btn" id="prev">‹ 이전</button>
+  <div class="tabs" id="tabs"></div>
+  <button class="btn primary" id="next">다음 ›</button>
+</div>
+
+<!-- 마크다운 파서 + Mermaid -->
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+/* ════════════════════════════════════════════════════════════
+   읽을 문서 목록 — 여기에 .md 파일만 추가하면 슬라이드가 늘어남
+   ════════════════════════════════════════════════════════════ */
+const FILES = [
+  { label: 'WBS',        path: 'WBS.md' },
+  { label: 'RTwP 루프',  path: 'rtwp_battle_loop.md' },
+  { label: '씬 흐름',     path: 'scene_flow.md' },
+];
+
+mermaid.initialize({ startOnLoad:false, theme:'dark',
+  themeVariables:{ fontSize:'14px' }, flowchart:{ curve:'basis' } });
+
+marked.setOptions({ gfm:true, breaks:false });
+
+const elContent = document.getElementById('content');
+const elDocName = document.getElementById('doc-name');
+const elCurFile = document.getElementById('cur-file');
+const elCurIdx  = document.getElementById('cur-idx');
+const elTotal   = document.getElementById('total-idx');
+const btnPrev   = document.getElementById('prev');
+const btnNext   = document.getElementById('next');
+const elTabs    = document.getElementById('tabs');
+
+let idx = 0;
+const cache = {};           // path -> rendered html
+elTotal.textContent = FILES.length;
+
+// 탭 생성
+FILES.forEach((f,i)=>{
+  const t=document.createElement('button');
+  t.className='tab'+(i===0?' active':'');
+  t.textContent=f.label;
+  t.onclick=()=>go(i);
+  elTabs.appendChild(t);
+});
+const tabs=[...elTabs.children];
+
+/* marked 커스텀: ```mermaid 블록을 <pre class="mermaid">로 변환 */
+const renderer = new marked.Renderer();
+const origCode = renderer.code.bind(renderer);
+renderer.code = (code, lang) => {
+  // marked v12: code(token) 또는 (string, lang) 양쪽 호환
+  let text = code, language = lang;
+  if (typeof code === 'object' && code !== null){ text = code.text; language = code.lang; }
+  if ((language||'').trim().toLowerCase() === 'mermaid'){
+    // mermaid는 raw 텍스트(<br/>, --> 등)를 그대로 받아야 함 — 이스케이프 금지
+    return `<pre class="mermaid">${text}</pre>`;
+  }
+  return origCode(code, lang);
+};
+marked.use({ renderer });
+
+async function loadFile(i){
+  const f = FILES[i];
+  if (cache[f.path]) return cache[f.path];
+  const res = await fetch(f.path, { cache:'no-store' });
+  if (!res.ok) throw new Error(`${f.path} — HTTP ${res.status}`);
+  const md = await res.text();
+  const html = marked.parse(md);
+  cache[f.path] = html;
+  return html;
+}
+
+async function go(i){
+  idx = Math.max(0, Math.min(FILES.length-1, i));
+  const f = FILES[idx];
+  elDocName.textContent = f.path;
+  elCurFile.textContent = f.path;
+  elCurIdx.textContent  = idx+1;
+  btnPrev.disabled = idx===0;
+  btnNext.disabled = idx===FILES.length-1;
+  tabs.forEach((t,j)=>t.classList.toggle('active', j===idx));
+
+  elContent.innerHTML = '<div class="loading">불러오는 중…</div>';
+  try{
+    elContent.innerHTML = await loadFile(idx);
+    const blocks = elContent.querySelectorAll('.mermaid');
+    if (blocks.length) await mermaid.run({ nodes:[...blocks] });
+  }catch(err){
+    elContent.innerHTML =
+      `<div class="error">파일을 불러오지 못했습니다: ${err.message}<br><br>`+
+      `로컬에서 파일을 더블클릭해 열면 보안정책(CORS)으로 차단될 수 있습니다.<br>`+
+      `GitHub Pages에 올리거나 로컬 서버(<code>python -m http.server</code>)로 여세요.</div>`;
+    console.error(err);
+  }
+}
+
+btnNext.onclick = ()=>go(idx+1);
+btnPrev.onclick = ()=>go(idx-1);
+document.addEventListener('keydown', e=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown') go(idx+1);
+  if(e.key==='ArrowLeft' ||e.key==='PageUp')   go(idx-1);
+});
+
+go(0);
+</script>
 </body>
 </html>
