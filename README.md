@@ -1,6 +1,6 @@
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-05-31 (허브→전투 씬 연결 버그 수정)
+> 최종 업데이트: 2026-05-31 (ADR 문서화 + 엔드-투-엔드 플레이어빌리티 수정)
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -211,3 +211,89 @@
 | 11.0.3 | StageRunner.OnMissionSelectedFromHub: EliminateAll + PartyWipe 승패 조건 추가 | ✅ | 05-31 |
 | 11.0.4 | Battle.unity: PartyManager.partyMemberPrefab 연결 (PartyMember_Prefab) | ✅ | 05-31 |
 | 11.0.5 | Battle.unity: StageRunner.chapterData 연결 (ChapterData_Ch1) | ✅ | 05-31 |
+| **12.0** | **StageConfig 웨이브 스테이지 시스템** | ✅ | 05-31 |
+| 12.0.1 | StageConfig SO (stageId/waves/WaveConfig/SpawnEntry/WinConditionType/WaveTrigger) | ✅ | 05-31 |
+| 12.0.2 | WaveRunner MonoBehaviour + WaveRunnerClearCondition (웨이브 순차 스폰) | ✅ | 05-31 |
+| 12.0.3 | ChapterData.stages: StageConfig[] 추가 (MissionConfig[] 하위 호환 유지) | ✅ | 05-31 |
+| 12.0.4 | ChapterProgressData StageConfig 오버로드 (RecordClear/IsCleared/IsUnlocked) | ✅ | 05-31 |
+| 12.0.5 | StageRunner PendingStage 경로 + OnStageSelectedFromHub + SpawnEntryFromStage | ✅ | 05-31 |
+| 12.0.6 | GameManager PendingStage + LoadBattle(StageConfig) + OnBattleWon(StageConfig) | ✅ | 05-31 |
+| 12.0.7 | ChapterHubScreen StageConfig 슬롯 표시 (MissionConfig 슬롯과 공존) | ✅ | 05-31 |
+| 12.0.8 | Stage_Ch1_M1_Patrol / M2_Ambush / M3_Investigate 에셋 생성 + ChapterData 등록 | ✅ | 05-31 |
+| 12.0.9 | 스테이지 제작 가이드 (docs/guides/stage-creation-guide.md) | ✅ | 05-31 |
+| **13.0** | **전투 결과 화면 개선** | ✅ | 05-31 |
+| 13.0.1 | StageRunner.Update() 승패 폴링 — BattleSimulation 일시정지 무관 클리어 감지 | ✅ | 05-31 |
+| 13.0.2 | BattleResultScreen 구조 개선 — GO 비활성 유지 + ShowResult 정적 메서드 + FindObjectOfType 폴백 | ✅ | 05-31 |
+| 13.0.3 | BattleResultScreen 카드 UI — txtTitle/btnReplay 추가, 네이비 카드+골드 아웃라인 레이아웃 | ✅ | 05-31 |
+| 13.0.4 | GameManager.OnBattleWonCore null 폴백 — CurrentSave null 시 ShowResult(0,null) | ✅ | 05-31 |
+| **14.0** | **허브 UI 리디자인** | ✅ | 05-31 |
+| 14.0.1 | ChapterHub 헤더 — IbarraRealNova-SemiBold 챕터 제목, Jost-SemiBold 스탯, 아이콘 버튼 | ✅ | 05-31 |
+| 14.0.2 | ChapterHub 패널 — Outline 컴포넌트, 임무목록/출격정보 라벨 스타일 | ✅ | 05-31 |
+| 14.0.3 | 상점/저장 버튼 — DarkBackground 아이콘 스프라이트 (Shop_DarkBG / Reload_DarkBG) | ✅ | 05-31 |
+| 14.0.4 | 출격 버튼 — 레드-오렌지 강조색 + Outline, "출격" 중앙 텍스트 | ✅ | 05-31 |
+| 14.0.5 | MissionSlot 프리팹 — 다크 스타일 + Outline 통일 | ✅ | 05-31 |
+| **15.0** | **ADR 문서화 & 아키텍처 정비** | ✅ | 05-31 |
+| 15.0.1 | ADR-0006: StageConfig + WaveRunner 신규 시스템 (레거시 StageData 공존) | ✅ | 05-31 |
+| 15.0.2 | ADR-0007: ChapterHub 별도 씬 구조 + ChapterHubScreen active=true 타이밍 결정 | ✅ | 05-31 |
+| 15.0.3 | ADR-0008: StageRunner.Update() 승패 폴링 (BattleSimulation 일시정지 무관) | ✅ | 05-31 |
+| 15.0.4 | ADR-0009: Modern GDR + Cainos UI 아트 방향 — 폰트/컬러 팔레트 확정 | ✅ | 05-31 |
+| 15.0.5 | ADR-0010: 코루틴 → 20 TPS 고정 틱 시뮬레이션 전환 | ✅ | 05-31 |
+| 15.0.6 | CLAUDE.md ADR 지침 강화 — 코드 작성 전 ADR 의무화, docs/adr/ 경로 수정 | ✅ | 05-31 |
+| **16.0** | **엔드-투-엔드 플레이어빌리티 버그 수정** | ✅ | 05-31 |
+| 16.0.1 | StageRunner: EventBus OnUnitDied 구독 → LootManager.OnEnemyDefeated 연결 | ✅ | 05-31 |
+| 16.0.2 | GameManager.OnBattleWonCore: 전투 후 파티 HP SaveData 동기화 | ✅ | 05-31 |
+| 16.0.3 | GameManager.InitDefaultParty: BalanceConfig.startingGold 초기 골드 설정 | ✅ | 05-31 |
+| 16.0.4 | ChapterHubController.Start: CheckChapterFailed() 호출 — 날짜 소진 소프트락 방지 | ✅ | 05-31 |
+| 16.0.5 | ChapterHubScreen: txtGold 필드 + RefreshHeader() 골드 표시 | ✅ | 05-31 |
+
+# RTwP 전투 루프 (Real-Time with Pause)
+
+```mermaid
+flowchart TD
+    Start([Update 매 프레임]) --> CQ[1 . CommandQueue 처리<br/>IsPaused 무관 · 데드락 방지]
+    CQ --> Check{IsPaused<br/>false?}
+    Check -->|Yes 진행| Acc[2 . accumulator += dt<br/>20 tick/s 고정 스텝]
+    Check -->|No 정지| Interp
+    Acc --> Loop{accumulator<br/>>= 1/20s?}
+    Loop -->|Yes| Tick[SimTick 실행]
+    Tick --> Loop
+    Loop -->|No| Freeze
+    Freeze[3 . AutoFreeze 판정<br/>IsPaused 갱신] --> Interp[4 . Interpolate 위치 보간<br/>항상 실행]
+    Interp --> End([프레임 종료])
+
+    subgraph SimTickDetail["SimTick 내부 순서"]
+        direction TB
+        T1[행동 선딜→효과→후딜] --> T2[상태이상 DoT]
+        T2 --> T3[AP 회복]
+        T3 --> T4[적 AI FSM]
+        T4 --> T5[보스 페이즈]
+        T5 --> T6[승패 판정]
+    end
+
+    Tick -.포함.-> SimTickDetail
+
+    classDef always fill:#742a2a,stroke:#c53030,color:#fff
+    classDef cond fill:#975a16,stroke:#d69e2e,color:#fff
+    class CQ,Interp always
+    class Check,Loop cond
+```
+
+# 씬 흐름 (Scene Flow)
+ 
+```mermaid
+flowchart LR
+    MM[MainMenu] -->|NewGame| TUT[Tutorial]
+    MM -->|Continue| HUB[ChapterHub]
+    TUT -->|적 처치| HUB
+    HUB -->|출격| BAT[Battle]
+    BAT -->|클리어| HUB
+    BAT -->|패배| REP[Replay]
+    REP --> HUB
+    BAT -->|보스+최종 챕터| END[Ending]
+ 
+    classDef menu fill:#2d3748,stroke:#4a5568,color:#fff
+    classDef play fill:#742a2a,stroke:#c53030,color:#fff
+    class MM,HUB menu
+    class TUT,BAT,REP,END play
+```
+ 
