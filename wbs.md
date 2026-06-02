@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-01
+> 최종 업데이트: 2026-06-02
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -242,3 +242,28 @@ permalink: /wbs/
 | R-4 | 기술 | 조건 판정 타이밍 — IsPaused 상태에서 클리어 조건 미체크 | ✅ 발생 (EliminateAllEnemiesCondition Count==0 가드 버그 반복) | Update() 폴링으로 BattleSimulation과 독립 (ADR-0008). _hadEnemies 플래그 도입 (ADR-0012) |
 | R-5 | 기술 | 에셋 스프라이트 슬라이싱 오류 — 투명 셀 참조로 유닛 불가시 | ✅ 발생 (Cainos banditCrossbowM2 스프라이트 95% 투명) | 신규 에셋 임포트 시 스프라이트 opaque pixel 비율 확인. 대체 표현(UnitCircle) 준비 |
 | R-6 | 일정 | 특정 시스템 마이그레이션 공수 과소 추정 | ✅ 발생 (코루틴→고정 틱 전환 약 1주 소요) | 마이그레이션 전 ADR 작성 + Phase 분리 계획 필수 (ADR-0010) |
+
+---
+
+## 18.0 Directional 스킬 시스템 구현
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **18** | **Directional 스킬 클라이언트 구현** | ✅ | 06-02 |
+| 18.1 | SkillData targetingMode 필드 추가 (Positional/Directional enum) | ✅ | 06-01 |
+| 18.2 | UnitCombatAction.TryUseSkillDirectional() 메서드 | ✅ | 06-01 |
+| 18.3 | SkillPanel.TryExecutePendingSkillDirectional() 메서드 | ✅ | 06-02 |
+| 18.4 | BattleInputHandler Directional 클릭 방향 입력 처리 | ✅ | 06-02 |
+
+---
+
+## 19.0 적 AI 고도화 + 스킬 장판 시각화
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **19** | **적 AI 고도화 + 스킬 장판 시각화** | ✅ | 06-02 |
+| 19.1 | SkillData IndicatorShape/SkillUsage enum + 필드 추가 | ✅ | 06-02 |
+| 19.2 | SkillIndicator 장판 시각화 컴포넌트 (scale 0→1 보간) | ✅ | 06-02 |
+| 19.3 | UnitCombatAction 장판 연동 + Directional 다중 타겟 지원 | ✅ | 06-02 |
+| 19.4 | EnemyAI SelectBestSkill() — SkillUsage/AoE/힐 우선순위 선택 | ✅ | 06-02 |
+| 19.5 | EnemyGroupCoordinator — 포커스 파이어/힐러 후방/산개/협공 | ✅ | 06-02 |
