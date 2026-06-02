@@ -267,3 +267,4 @@ permalink: /wbs/
 | 19.3 | UnitCombatAction 장판 연동 + Directional 다중 타겟 지원 | ✅ | 06-02 |
 | 19.4 | EnemyAI SelectBestSkill() — SkillUsage/AoE/힐 우선순위 선택 | ✅ | 06-02 |
 | 19.5 | EnemyGroupCoordinator — 포커스 파이어/힐러 후방/산개/협공 | ✅ | 06-02 |
+| 19.6 | SkillIndicator 프리팹 생성 + Battle 씬 EnemyGroupCoordinator 배치 | ✅ | 06-02 |
