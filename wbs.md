@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-02
+> 최종 업데이트: 2026-06-03
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -268,3 +268,18 @@ permalink: /wbs/
 | 19.4 | EnemyAI SelectBestSkill() — SkillUsage/AoE/힐 우선순위 선택 | ✅ | 06-02 |
 | 19.5 | EnemyGroupCoordinator — 포커스 파이어/힐러 후방/산개/협공 | ✅ | 06-02 |
 | 19.6 | SkillIndicator 프리팹 생성 + Battle 씬 EnemyGroupCoordinator 배치 | ✅ | 06-02 |
+
+---
+
+## 20.0 전투 UX 개선 — 스킬 슬롯·장판 아웃라인·파티 HUD
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **20** | **전투 UX 개선** | ✅ | 06-03 |
+| 20.1 | 스킬 슬롯 4개 제한 + QWER/A 단축키 (SkillPanel, SkillButton, BattleInputHandler) | ✅ | 06-03 |
+| 20.2 | SkillIndicator 아웃라인 링/테두리 추가 — Circle/Rect/Cone 각 Outline SpriteRenderer | ✅ | 06-03 |
+| 20.3 | 찌르기 스킬 Directional Rectangle — 방향 오프셋·fill 보간·선딜 0.5s 수정 | ✅ | 06-03 |
+| 20.4 | EnemyAI lazy init 버그 수정 + SpawnEnemy AddComponent 순서 수정 | ✅ | 06-03 |
+| 20.5 | StageRunner defaultStage — Battle 씬 직접 플레이 지원 | ✅ | 06-03 |
+| 20.6 | BattleInputHandler 자동 유닛 선택 (OnUnitActed 이벤트 연동) | ✅ | 06-03 |
+| 20.7 | BattleUIBuilder 파티 HP/AP HUD — 이름·수치·슬라이더 3슬롯 (Battle 씬 배치) | ✅ | 06-03 |
