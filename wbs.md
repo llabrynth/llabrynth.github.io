@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-03
+> 최종 업데이트: 2026-06-05
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -283,3 +283,23 @@ permalink: /wbs/
 | 20.5 | StageRunner defaultStage — Battle 씬 직접 플레이 지원 | ✅ | 06-03 |
 | 20.6 | BattleInputHandler 자동 유닛 선택 (OnUnitActed 이벤트 연동) | ✅ | 06-03 |
 | 20.7 | BattleUIBuilder 파티 HP/AP HUD — 이름·수치·슬라이더 3슬롯 (Battle 씬 배치) | ✅ | 06-03 |
+
+---
+
+## 21.0 투사체 시스템 + 스킬 장판 개선
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **21** | **투사체 시스템 + 스킬 장판 개선** | ✅ | 06-05 |
+| 21.1 | 적 행동 시 노란색 하이라이트 제거 — IsEnemy 체크로 아군만 표시 | ✅ | 06-05 |
+| 21.2 | 강타 스킬 Directional Cone 변경 — 90° 원뿔, range=2m | ✅ | 06-05 |
+| 21.3 | SkillIndicator fill 틱 기반 보간 — SetProgress(t) + _preDelayTotal | ✅ | 06-05 |
+| 21.4 | Projectile 클래스 — TickMove(dt) 틱 기반 투사체 이동 | ✅ | 06-05 |
+| 21.5 | SkillData isProjectile + projectileSpeed 필드 | ✅ | 06-05 |
+| 21.6 | 사격 스킬 (Skill_Shot) — Directional Single Rectangle, 투사체, 사거리 5m | ✅ | 06-05 |
+| 21.7 | 중위 (Char_Midguard) 사격 스킬 슬롯 추가 | ✅ | 06-05 |
+| 21.8 | Projectile_Arrow 프리팹 + Arrow 스프라이트 | ✅ | 06-05 |
+| 21.9 | 장판 스프라이트 SmoothStep 안티앨리어싱 + Circle/Rect/Cone/Ring 256×256 재생성 | ✅ | 06-05 |
+| 21.10 | Cone 스프라이트 BottomCenter pivot — 뿔 끝을 캐스터 위치에 고정 | ✅ | 06-05 |
+| 21.11 | ADR-0013 투사체 틱 기반 시뮬레이션 | ✅ | 06-05 |
+| 21.12 | ChapterHubScreen txtGold Inspector 연결 (B5 완료) | ✅ | 06-05 |
