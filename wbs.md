@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-05
+> 최종 업데이트: 2026-06-06
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -303,3 +303,31 @@ permalink: /wbs/
 | 21.10 | Cone 스프라이트 BottomCenter pivot — 뿔 끝을 캐스터 위치에 고정 | ✅ | 06-05 |
 | 21.11 | ADR-0013 투사체 틱 기반 시뮬레이션 | ✅ | 06-05 |
 | 21.12 | ChapterHubScreen txtGold Inspector 연결 (B5 완료) | ✅ | 06-05 |
+
+---
+
+## 22.0 적 AI 전투 활성화 + RTwP 타이머 UI
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **22** | **적 AI 전투 활성화 + RTwP 타이머 UI** | ✅ | 06-05 |
+| 22.1 | Projectile 틱 보간 — _prevPos/_currentPos + Interpolate(alpha) | ✅ | 06-05 |
+| 22.2 | UnitCombatAction.InterpolateProjectile — 유닛 Interpolate 체인 연결 | ✅ | 06-05 |
+| 22.3 | EnemyArchetype.attackRange 필드 + SetArchetype() 런타임 적용 | ✅ | 06-05 |
+| 22.4 | EnemyArchetype_Soldier — skills [Slash, HeavyBlow], attackRange=2.5 | ✅ | 06-05 |
+| 22.5 | EnemyArchetype_Archer — skills [Shot], attackRange=5.0 | ✅ | 06-05 |
+| 22.6 | BattleSimTimer — SimTime 틱 기반 MM:SS.cc 타이머, 일시정지 ⏸/▶ 표시 | ✅ | 06-05 |
+| 22.7 | Battle.unity SimTimer GameObject — BattleHUD 상단 중앙 배치 | ✅ | 06-05 |
+
+---
+
+## 23.0 전투 버그 수정 — 맵 밖 스폰 / 원뿔 장판 불일치
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **23** | **전투 버그 수정 배치** | ✅ | 06-06 |
+| 23.1 | EnemyAI.ChaseKeepDistance IsInBounds 체크 — RangedSniper 맵 밖 탈출 버그 수정 | ✅ | 06-06 |
+| 23.2 | SkillIndicator_ConeRing.png 재생성 — SmoothStep 엣지 안티앨리어싱 (경계 텍스처) | ✅ | 06-06 |
+| 23.3 | SkillIndicator_Cone.png fill 재생성 — 잘못된 tan=1 기하학 + 원형 클립 버그 수정 | ✅ | 06-06 |
+| 23.4 | UnitCombatAction OnUnitDied 구독 — 사망 시 스킬 장판 잔상 제거 | ✅ | 06-06 |
+| 23.5 | 원뿔 장판 부채꼴(sector) 형태 — Fill + ConeRing 텍스처 재생성 (삼각형→원호 클립) | ✅ | 06-06 |
