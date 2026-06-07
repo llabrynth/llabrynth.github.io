@@ -9,6 +9,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+    window.__mermaid = mermaid;
+  </script>
 
   <style>
     :root {
@@ -196,6 +201,8 @@
     .md-content th,.md-content td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
     .md-content th { background: var(--border); }
     .md-content img { max-width: 100%; border-radius: 8px; }
+    .mermaid-wrap { margin: 1em 0; display: flex; justify-content: center; }
+    .mermaid-wrap svg { max-width: 100%; border-radius: 8px; background: #0d1117; padding: 16px; }
 
     /* ── VIDEO MODAL ── */
     #video-modal {
@@ -518,11 +525,11 @@ function typeFromName(name) {
 
 // ── marked config ────────────────────────────────────────
 const renderer = new marked.Renderer();
-renderer.code = ({ text, lang }) => {
+renderer.code = (code, lang) => {
   const language = lang && hljs.getLanguage(lang) ? lang : null;
   const highlighted = language
-    ? hljs.highlight(text, { language }).value
-    : hljs.highlightAuto(text).value;
+    ? hljs.highlight(code, { language }).value
+    : hljs.highlightAuto(code).value;
   return `<pre><code class="hljs${language ? ' language-'+language : ''}">${highlighted}</code></pre>`;
 };
 marked.use({ renderer, breaks: true, gfm: true });
@@ -627,6 +634,23 @@ async function openMd(f) {
     f.content = text;
   }
   mdContent.innerHTML = marked.parse(text);
+
+  // mermaid 블록 렌더링
+  const mermaid = window.__mermaid;
+  if (mermaid) {
+    mdContent.querySelectorAll('pre code.language-mermaid').forEach((el, i) => {
+      const code = el.textContent;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'mermaid-wrap';
+      el.closest('pre').replaceWith(wrapper);
+      mermaid.render('mermaid-' + Date.now() + '-' + i, code).then(({ svg }) => {
+        wrapper.innerHTML = svg;
+      }).catch(err => {
+        wrapper.innerHTML = '<pre style="color:var(--danger);font-size:.8rem">' + err + '</pre>';
+      });
+    });
+  }
+
   mdModal.classList.add('open');
 }
 document.getElementById('btn-close-md').addEventListener('click', () => mdModal.classList.remove('open'));
