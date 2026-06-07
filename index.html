@@ -517,13 +517,15 @@ function typeFromName(name) {
 }
 
 // ── marked config ────────────────────────────────────────
-marked.setOptions({
-  highlight: (code, lang) => {
-    if (lang && hljs.getLanguage(lang)) return hljs.highlight(code, { language: lang }).value;
-    return hljs.highlightAuto(code).value;
-  },
-  breaks: true, gfm: true,
-});
+const renderer = new marked.Renderer();
+renderer.code = ({ text, lang }) => {
+  const language = lang && hljs.getLanguage(lang) ? lang : null;
+  const highlighted = language
+    ? hljs.highlight(text, { language }).value
+    : hljs.highlightAuto(text).value;
+  return `<pre><code class="hljs${language ? ' language-'+language : ''}">${highlighted}</code></pre>`;
+};
+marked.use({ renderer, breaks: true, gfm: true });
 
 // ── 초기 로드 ────────────────────────────────────────────
 async function init() {
@@ -625,7 +627,6 @@ async function openMd(f) {
     f.content = text;
   }
   mdContent.innerHTML = marked.parse(text);
-  mdContent.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
   mdModal.classList.add('open');
 }
 document.getElementById('btn-close-md').addEventListener('click', () => mdModal.classList.remove('open'));
