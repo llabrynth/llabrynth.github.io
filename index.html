@@ -641,7 +641,7 @@ async function openMd(f) {
     text = await res.text();
     f.content = text;
   }
-  mdContent.innerHTML = marked.parse(text);
+  mdContent.innerHTML = marked.parse(text.replace(/\r\n/g, '\n').replace(/\r/g, '\n'));
 
   // mermaid 블록 렌더링
   const renderMermaid = (mermaid) => {
