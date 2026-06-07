@@ -1,0 +1,69 @@
+name: Generate files.json
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate files.json
+        run: |
+          python3 - <<'EOF'
+          import os, json, mimetypes
+
+          # 무시할 파일/폴더
+          IGNORE = {
+            'index.html', 'files.json', '.gitignore', 'README.md', 'readme.md',
+          }
+          IGNORE_PREFIXES = ('.', '_')
+
+          VIDEO_EXT  = {'.mp4', '.webm', '.mov', '.avi', '.mkv'}
+          MD_EXT     = {'.md', '.markdown'}
+
+          def file_type(name):
+            ext = os.path.splitext(name)[1].lower()
+            if ext == '.pdf':   return 'pdf'
+            if ext in VIDEO_EXT: return 'video'
+            if ext in MD_EXT:   return 'md'
+            return 'other'
+
+          files = []
+          for entry in sorted(os.listdir('.')):
+            # 숨김 파일, 폴더, 무시 목록 건너뜀
+            if entry in IGNORE:                         continue
+            if entry[0] in IGNORE_PREFIXES:             continue
+            if os.path.isdir(entry):                    continue
+
+            size = os.path.getsize(entry)
+            files.append({
+              'name': entry,
+              'path': entry,
+              'size': size,
+              'type': file_type(entry),
+            })
+
+          with open('files.json', 'w', encoding='utf-8') as f:
+            json.dump(files, f, ensure_ascii=False, indent=2)
+
+          print(f"Generated files.json with {len(files)} files:")
+          for item in files:
+            print(f"  {item['type']:6s}  {item['size']:>10,}  {item['name']}")
+          EOF
+
+      - name: Commit files.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add files.json
+          # 변경사항 있을 때만 커밋
+          git diff --cached --quiet || git commit -m "chore: update files.json [skip ci]"
+          git push
