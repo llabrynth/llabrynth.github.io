@@ -312,6 +312,14 @@
     .thumb-item.active { border-color: var(--accent); }
     .thumb-item canvas { width: 100%; height: 100%; object-fit: cover; }
 
+    /* ── 전체화면 모드 ── */
+    #present-modal:fullscreen #present-toolbar,
+    #present-modal:fullscreen #thumb-strip { display: none; }
+    #present-modal:-webkit-full-screen #present-toolbar,
+    #present-modal:-webkit-full-screen #thumb-strip { display: none; }
+    #present-modal:fullscreen #slide-area { background: #000; }
+    #present-modal:fullscreen #slide-canvas-wrapper { box-shadow: none; }
+
     /* spinner */
     .spinner { width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .6s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
@@ -636,8 +644,7 @@ async function openMd(f) {
   mdContent.innerHTML = marked.parse(text);
 
   // mermaid 블록 렌더링
-  const mermaid = window.__mermaid;
-  if (mermaid) {
+  const renderMermaid = (mermaid) => {
     mdContent.querySelectorAll('pre code.language-mermaid').forEach((el, i) => {
       const code = el.textContent;
       const wrapper = document.createElement('div');
@@ -649,6 +656,16 @@ async function openMd(f) {
         wrapper.innerHTML = '<pre style="color:var(--danger);font-size:.8rem">' + err + '</pre>';
       });
     });
+  };
+  if (window.__mermaid) {
+    renderMermaid(window.__mermaid);
+  } else {
+    // ESM 로드 타이밍 대기 (최대 3초)
+    const t0 = Date.now();
+    const poll = setInterval(() => {
+      if (window.__mermaid) { clearInterval(poll); renderMermaid(window.__mermaid); }
+      else if (Date.now() - t0 > 3000) clearInterval(poll);
+    }, 50);
   }
 
   mdModal.classList.add('open');
@@ -764,7 +781,9 @@ async function renderSlide(n) {
   const page = await state.pdfDoc.getPage(n);
   const area = document.getElementById('slide-area');
   const vp0 = page.getViewport({scale:1});
-  const scale = Math.min((area.clientWidth-40)/vp0.width,(area.clientHeight-40)/vp0.height,2);
+  const isFs = !!document.fullscreenElement;
+  const pad = isFs ? 0 : 40;
+  const scale = Math.min((area.clientWidth-pad)/vp0.width,(area.clientHeight-pad)/vp0.height, isFs ? 999 : 2);
   const vp = page.getViewport({scale});
   slideCanvas.width=vp.width; slideCanvas.height=vp.height;
   await page.render({canvasContext:slideCanvas.getContext('2d'),viewport:vp}).promise;
@@ -779,8 +798,13 @@ document.getElementById('btn-close-present').addEventListener('click',()=>{
   if(document.fullscreenElement) document.exitFullscreen();
 });
 btnFull.addEventListener('click',()=>{
-  if(!document.fullscreenElement){presentModal.requestFullscreen();btnFull.textContent='⛶ 전체화면 해제';}
-  else{document.exitFullscreen();btnFull.textContent='⛶ 전체화면';}
+  if(!document.fullscreenElement){
+    presentModal.requestFullscreen();
+    btnFull.textContent='⛶ 전체화면 해제';
+  } else {
+    document.exitFullscreen();
+    btnFull.textContent='⛶ 전체화면';
+  }
 });
 document.addEventListener('fullscreenchange',()=>{
   if(!document.fullscreenElement) btnFull.textContent='⛶ 전체화면';
