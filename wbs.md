@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-06
+> 최종 업데이트: 2026-06-07 (24.17)
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -331,3 +331,37 @@ permalink: /wbs/
 | 23.3 | SkillIndicator_Cone.png fill 재생성 — 잘못된 tan=1 기하학 + 원형 클립 버그 수정 | ✅ | 06-06 |
 | 23.4 | UnitCombatAction OnUnitDied 구독 — 사망 시 스킬 장판 잔상 제거 | ✅ | 06-06 |
 | 23.5 | 원뿔 장판 부채꼴(sector) 형태 — Fill + ConeRing 텍스처 재생성 (삼각형→원호 클립) | ✅ | 06-06 |
+
+---
+
+## 24.0 전투 메커니즘 — AP 회복 상향 + 패링/회피 스킬
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **24** | **AP 회복 + 패링/회피 스킬** | ✅ | 06-06 |
+| 24.1 | AP 회복 기본값 10→20/sec (ClassData, CharacterData) | ✅ | 06-06 |
+| 24.2 | SkillData isInstantSelf + dodgeParryData 필드 — 자체 발동 스킬 지원 | ✅ | 06-06 |
+| 24.3 | DodgeParryData apRecoveryOnDodge 필드 — 회피 성공 AP 회복량 | ✅ | 06-06 |
+| 24.4 | 패링 성공 시 공격자 1타일 Knockback + "패링!" 팝업 | ✅ | 06-06 |
+| 24.5 | 회피 성공 시 방어자 AP 회복 + "회피!" 팝업 | ✅ | 06-06 |
+| 24.6 | DamagePopup/Manager ShowText(string) — 임팩트 텍스트 팝업 | ✅ | 06-06 |
+| 24.7 | SkillPanel 자체 발동 스킬 즉시 실행 + 회피 방향 자동 결정 | ✅ | 06-06 |
+| 24.8 | Skill_Parry.asset + Skill_Dodge.asset 생성 | ✅ | 06-06 |
+| 24.9 | 전위/중위 → 패링 스킬, 후위 → 회피 스킬 CharacterData 등록 | ✅ | 06-06 |
+| 24.10 | SkillIndicator.ShowParryTimer() — 금색 원 활성 시간 타이머 | ✅ | 06-06 |
+| 24.11 | SkillPanel.IsDodgeMode — 회피 목적지 클릭 모드 (범위 원 표시 + 방향 스냅) | ✅ | 06-06 |
+| 24.12 | BattleInputHandler 회피 모드 클릭 처리 + 예측선 | ✅ | 06-06 |
+| 24.13 | 패링 넉백 보간 잔상 제거 + EnemyAI 즉시 재공격 방지 스태거 | ✅ | 06-06 |
+| 24.14 | Sorting Layer 계층 정리 — Layer 1 단일 레이어 order 구간 확정 (ADR-0014) | ✅ | 06-06 |
+| 24.15 | "패링!" 팝업 미표시 버그 수정 — DamagePopupManager 씬 미배치 + 한글 폰트 누락 | ✅ | 06-07 |
+| 24.16 | 회피 유예 타이머 — DodgeGraceTimer 0.5초, 이동 완료 후 원래 자리 공격 회피 판정 | ✅ | 06-07 |
+| 24.17 | 회피 IsDodgeActive 타이밍 버그 — StartDodge에서 즉시 활성화 (패링 구조 통일) | ✅ | 06-07 |
+| 25.0 | 시작화면 배경 맵 — 숲+폐허 Tilemap + Perlin 드리프트 카메라 | ✅ | 06-07 |
+| 25.1 | MainMenuCameraDrift.cs — Perlin noise 카메라 드리프트 스크립트 | ✅ | 06-07 |
+| 25.2 | MainMenu 씬 Grid + 4-layer Tilemap 구조 세팅 | ✅ | 06-07 |
+| 25.3 | Ground 레이어 잔디/돌 바이옴 Perlin noise 경계 페인팅 | ✅ | 06-07 |
+| 25.4 | Transition 레이어 바이옴 경계 엣지 타일 처리 | ✅ | 06-07 |
+| 25.5 | 오브젝트 배치 — 나무 클러스터·우물·성벽 잔해·제단·묘비 | ✅ | 06-07 |
+| 25.6 | UI Layout C — 타이틀 상단 + 하단 반투명 버튼 바 | ✅ | 06-07 |
+| 25.7 | 배경 맵 오브젝트 밀도 개선 — 숲·폐허·전환 구역 오브젝트 200개 추가 | ✅ | 06-07 |
+| 25.8 | 배경 맵 벽/절벽 지형 17개 구조물 추가 — Wall/Cliff 타일 조합 | ✅ | 06-07 |
