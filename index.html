@@ -791,9 +791,13 @@ async function renderSlide(n) {
   const vp0 = page.getViewport({scale:1});
   const isFs = !!document.fullscreenElement;
   const pad = isFs ? 0 : 40;
+  const dpr = window.devicePixelRatio || 1;
   const scale = Math.min((area.clientWidth-pad)/vp0.width,(area.clientHeight-pad)/vp0.height, isFs ? 999 : 2);
-  const vp = page.getViewport({scale});
-  slideCanvas.width=vp.width; slideCanvas.height=vp.height;
+  const vp = page.getViewport({scale: scale * dpr});
+  slideCanvas.width = vp.width;
+  slideCanvas.height = vp.height;
+  slideCanvas.style.width  = (vp.width  / dpr) + 'px';
+  slideCanvas.style.height = (vp.height / dpr) + 'px';
   await page.render({canvasContext:slideCanvas.getContext('2d'),viewport:vp}).promise;
   slideLoading.style.display='none';
 }
