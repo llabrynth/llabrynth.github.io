@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-07 (24.17)
+> 최종 업데이트: 2026-06-09 (26.0)
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -365,3 +365,25 @@ permalink: /wbs/
 | 25.6 | UI Layout C — 타이틀 상단 + 하단 반투명 버튼 바 | ✅ | 06-07 |
 | 25.7 | 배경 맵 오브젝트 밀도 개선 — 숲·폐허·전환 구역 오브젝트 200개 추가 | ✅ | 06-07 |
 | 25.8 | 배경 맵 벽/절벽 지형 17개 구조물 추가 — Wall/Cliff 타일 조합 | ✅ | 06-07 |
+
+---
+
+## 26.0 스킬 트리 UI & 성장 시스템
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **26** | **스킬 트리 UI & 성장 시스템** | ⬜ | — |
+| 26.0.0 | ADR-0015: 스킬 트리 레이아웃 & 성장 방식 결정 | ✅ | 06-09 |
+| **26.A** | **Phase A — 데이터·레벨링** | ⬜ | — |
+| 26.A.1 | SerializedPartyMember — unlockedSkillIds[], skillPoints, activeSlotIds[], passiveSlotIds[] | ⬜ | — |
+| 26.A.2 | BalanceConfig — xpPerLevel 필드 추가 | ⬜ | — |
+| 26.A.3 | GameManager.OnBattleWon — XP 집계 + 레벨업 처리 | ⬜ | — |
+| 26.A.4 | SkillTreeComponent.RestoreFromSave() — 저장된 언락 목록 복원 | ⬜ | — |
+| **26.B** | **Phase B — UI 핵심** | ⬜ | — |
+| 26.B.1 | SkillTreeNode — 아이콘·잠금 오버레이·클릭 이벤트 | ⬜ | — |
+| 26.B.2 | SkillTreePanel — 캐릭터 탭 3개, Tier 세로 배치, 연결선, 포인트 표시 | ⬜ | — |
+| 26.B.3 | ChapterHubScreen "성장" 버튼 → SkillTreePanel 호출 | ⬜ | — |
+| **26.C** | **Phase C — 콘텐츠 스킬 에셋** | ⬜ | — |
+| 26.C.1 | Vanguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ⬜ | — |
+| 26.C.2 | Midguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ⬜ | — |
+| 26.C.3 | Rearguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ⬜ | — |
