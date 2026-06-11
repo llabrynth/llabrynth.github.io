@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-11 (26.A.4)
+> 최종 업데이트: 2026-06-11 (26.B 완료)
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -379,10 +379,10 @@ permalink: /wbs/
 | 26.A.2 | BalanceConfig — xpPerLevel 필드 추가 | ✅ | 06-11 |
 | 26.A.3 | GameManager.OnBattleWon — XP 집계 + 레벨업 처리 | ✅ | 06-11 |
 | 26.A.4 | SkillTreeComponent.RestoreFromSave() — 저장된 언락 목록 복원 | ✅ | 06-11 |
-| **26.B** | **Phase B — UI 핵심** | ⬜ | — |
-| 26.B.1 | SkillTreeNode — 아이콘·잠금 오버레이·클릭 이벤트 | ⬜ | — |
-| 26.B.2 | SkillTreePanel — 캐릭터 탭 3개, Tier 세로 배치, 연결선, 포인트 표시 | ⬜ | — |
-| 26.B.3 | ChapterHubScreen "성장" 버튼 → SkillTreePanel 호출 | ⬜ | — |
+| **26.B** | **Phase B — UI 핵심** | ✅ | 06-11 |
+| 26.B.1 | SkillTreeNode — 아이콘·잠금 오버레이·클릭 이벤트 | ✅ | 06-11 |
+| 26.B.2 | SkillTreePanel — 캐릭터 탭 3개, Tier 세로 배치, 연결선, 포인트 표시 | ✅ | 06-11 |
+| 26.B.3 | ChapterHubScreen "성장" 버튼 → SkillTreePanel 호출 | ✅ | 06-11 |
 | **26.C** | **Phase C — 콘텐츠 스킬 에셋** | ⬜ | — |
 | 26.C.1 | Vanguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ⬜ | — |
 | 26.C.2 | Midguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ⬜ | — |
