@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-11 (26.B 완료)
+> 최종 업데이트: 2026-06-14 (스킬 애니메이션 개선 + 스프라이트 피벗 보정)
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -383,7 +383,74 @@ permalink: /wbs/
 | 26.B.1 | SkillTreeNode — 아이콘·잠금 오버레이·클릭 이벤트 | ✅ | 06-11 |
 | 26.B.2 | SkillTreePanel — 캐릭터 탭 3개, Tier 세로 배치, 연결선, 포인트 표시 | ✅ | 06-11 |
 | 26.B.3 | ChapterHubScreen "성장" 버튼 → SkillTreePanel 호출 | ✅ | 06-11 |
-| **26.C** | **Phase C — 콘텐츠 스킬 에셋** | ⬜ | — |
-| 26.C.1 | Vanguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ⬜ | — |
-| 26.C.2 | Midguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ⬜ | — |
-| 26.C.3 | Rearguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ⬜ | — |
+| 26.B.4 | ChapterHubUIBuilder — SkillTreeNode 프리팹 + SkillTreePanel GO 자동 생성 | ✅ | 06-11 |
+| **26.C** | **Phase C — 콘텐츠 스킬 에셋** | ✅ | 06-11 |
+| 26.C.1 | Vanguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ✅ | 06-11 |
+| 26.C.2 | Midguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ✅ | 06-11 |
+| 26.C.3 | Rearguard Tier1 스킬 3개 + Tier2 스킬 2개 SO | ✅ | 06-11 |
+| 26.C.4 | StatusEffect SO 5개 (기절/출혈/중독/약화/화상) + ClassData SO 3개 생성 | ✅ | 06-11 |
+| **26** | **스킬 트리 UI & 성장 시스템** | ✅ | 06-11 |
+
+---
+
+## 27.0 캐릭터 스프라이트 에셋 적용 — Olberic(전위) + Tressa(후위)
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **27** | **캐릭터 스프라이트 에셋 적용** | ✅ | 06-13 |
+| 27.1 | Olberic Animator(Olberic_Animator) Char_Vanguard 연결 + SetFacing flipX 방향 전환 | ✅ | 06-13 |
+| 27.2 | UnitController PartyColor 파란 tint 제거 → Color.white | ✅ | 06-13 |
+| 27.3 | SpriteCharacterView IsWalking Bool 기반 Walk 전환 — _walkParamChecked 캐시로 깜박임 해소 | ✅ | 06-13 |
+| 27.4 | Olberic Idle/Attack/Skill 투명 프레임 제거 (idle 9→8, atk 12→11, magic_atk 6→4) | ✅ | 06-13 |
+| 27.5 | UnitCombatAction 스킬 애니 재생 선딜→효과 처리 시점으로 이동 | ✅ | 06-13 |
+| 27.6 | SpriteCharacterView.OnDeath() Hit 포즈 0.15s 프리즈 후 원본 색상 알파 페이드 아웃 | ✅ | 06-13 |
+| 27.7 | SkillData.DamageType(Physical/Magical) 추가 → Physical=Attack, Magical=Skill 애니 분기 | ✅ | 06-13 |
+| 27.8 | OlbericSpritePivotFixer.cs — atk/magic_atk/standby full-cell 재슬라이싱 Editor Script | ✅ | 06-13 |
+| 27.9 | TressaAnimationBuilder.cs — idle/atk(3×6, 17프레임)/magic_atk/move/dying/dead + Tressa_Animator 생성 | ✅ | 06-13 |
+| 27.10 | TherionAnimationBuilder.cs — idle(8f)/atk(10f)/magic_atk(4f)/move/dying/dead + Therion_Animator 생성 + Char_Midguard 연결 | ✅ | 06-13 |
+| 27.11 | SkillData.DamageType.Support 추가 + AddSupportAnimation Editor Script — 3캐릭터 magic_standby 4f 클립+상태 추가 | ✅ | 06-13 |
+| 27.12 | UnitCombatAction 연속 사격(3발) — _activeProjectiles 리스트, 발사 간격, 중간 타격 처리 | ✅ | 06-13 |
+| 27.13 | SkillData 투사체 필드 추가 (isProjectile/Speed/Count/Interval) + Skill_Shot 연속 사격 3발 | ✅ | 06-13 |
+| 27.14 | 치료 스킬 damageType Physical → Support (Heal/EmpoweredHeal/MassHeal) | ✅ | 06-13 |
+| 27.15 | TickSpriteAnimator — AnimatorUpdateMode.Manual 제거, SampleAnimation 틱 기반 방식으로 재작성 | ✅ | 06-13 |
+
+---
+
+## 28.0 코드 리뷰 반영
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| 28.1 | DeathFade _baseColor.rgb 알파 페이드 (적 흰색 플래시 버그) | ✅ | 06-13 |
+| 28.2 | ApplyDirectionalEffect PositioningCalculator + 커버 보정 추가 | ✅ | 06-13 |
+| 28.3 | TickSpriteAnimator ApplyFrame 제거 → ForcePlay 원샷 메서드 추가 | ✅ | 06-13 |
+| 28.4 | UnitActionEvent.skillId — skill.name 기반 안정 해시 + skillName 기록 | ✅ | 06-13 |
+| 28.5 | 주석/문서 정정 (노란색→회색, SimTick 레이블, architecture.md 색상 테이블) | ✅ | 06-13 |
+| 28.6 | SoundId.SkillHeal + AudioConfig 연결 — 치료 스킬 전용 마법 효과음 | ✅ | 06-13 |
+
+---
+
+## 29.0 이펙트 스프라이트 레이어 분리
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| 29.1 | ADR-0016 — 이펙트 레이어 분리 설계 결정 | ✅ | 06-13 |
+| 29.2 | OlbericEffectSeparator — atk/magic_atk PNG 분리 Editor 스크립트 | ✅ | 06-13 |
+| 29.3 | TickSpriteAnimator SetLinked/StopAndClear — 보조 애니메이터 동기화 | ✅ | 06-13 |
+| 29.4 | SpriteCharacterView — EffectLayer 자동 탐지 및 SetFacing/SetVisible/DeathFade 연동 | ✅ | 06-13 |
+| 29.5 | OlbericAnimationBuilder — _char.png 폴백 + 이펙트 컨트롤러 생성 | ✅ | 06-13 |
+| 29.6 | Unity Editor: EffectLayer 자식 오브젝트 생성 및 메뉴 실행 | ✅ | 06-13 |
+| 29.7 | 치료 스킬 이중 효과음 버그 수정 — ApplySkillEffect 순수 힐 early return | ✅ | 06-13 |
+
+---
+
+## 30.0 스킬 애니메이션 개선 + 스프라이트 피벗 보정
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| 30.1 | 스테이지 클리어/실패 효과음 제거 — AudioManager BattleVictory/BattleDefeat 구독 제거 | ✅ | 06-13 |
+| 30.2 | 스킬 PostDelay 공격 모션 유지 — OnActingComplete UseSkill Idle 생략, OnPostDelayComplete Idle 전환 | ✅ | 06-13 |
+| 30.3 | 스킬 PreDelay 1프레임 고정 준비 자세 — TickSpriteAnimator.FreezeAtFirstFrame + UnitController 위임 | ✅ | 06-13 |
+| 30.4 | 스킬 Acting 진입 시 2번째 프레임부터 재생 — TickSpriteAnimator.PlayFromFrame + UnitCombatAction 연결 | ✅ | 06-14 |
+| 30.5 | Tressa 스프라이트 피벗 보정 — idle 기준 픽셀 측정, 전 애니메이션 pivot 계산, 전환 점프 제거 | ✅ | 06-14 |
+| 30.6 | Olberic 스프라이트 피벗 보정 — OlbericSpritePivotFixer atk_char/magic_atk_char/standby/move/dying/dead | ✅ | 06-14 |
+
