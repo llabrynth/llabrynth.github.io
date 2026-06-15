@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-14 (스킬 애니메이션 개선 + 스프라이트 피벗 보정)
+> 최종 업데이트: 2026-06-15 (월드맵 허브 레이아웃 + 3D 핀 마커)
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -454,3 +454,44 @@ permalink: /wbs/
 | 30.5 | Tressa 스프라이트 피벗 보정 — idle 기준 픽셀 측정, 전 애니메이션 pivot 계산, 전환 점프 제거 | ✅ | 06-14 |
 | 30.6 | Olberic 스프라이트 피벗 보정 — OlbericSpritePivotFixer atk_char/magic_atk_char/standby/move/dying/dead | ✅ | 06-14 |
 
+
+---
+
+## 31.0 전투 일시정지 메뉴
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| 31.1 | GameManager.LoadMainMenu() — 메인메뉴 페이드 전환 진입점 | ✅ | 06-15 |
+| 31.2 | BattlePauseMenu — ESC 감지, StopFlow/StartFlow, 재개/설정/허브/메인메뉴 버튼 | ✅ | 06-15 |
+| 31.3 | Battle 씬 BattlePauseMenu GO 추가 | ✅ | 06-15 |
+| 31.4 | HubEscMenu — ChapterHub ESC 메뉴 재개/설정/메인메뉴 | ✅ | 06-15 |
+
+---
+
+## 32.0 UI 디자인 시스템 — OT2 스타일 적용
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| 32.1 | UIColors.cs — HUD/테마A·B·C/스킬패널/팝업 색상 토큰 단일 진실 공급원 | ✅ | 06-15 |
+| 32.2 | BattleUIBuilder 슬롯별 테마 A/B/C 배경·바 색상 + L자 모서리 장식 | ✅ | 06-15 |
+| 32.3 | TimeFlowHUD 헤더 패널 제거 — 상단 중앙 글로우 텍스트(C안)만 유지 | ✅ | 06-15 |
+| 32.4 | SkillPanel MoveButton A-style(금테+코너장식)/WaitButton C-style + SetMoveHighlight | ✅ | 06-15 |
+| 32.5 | BattlePauseMenu·HubEscMenu UIColors 상수 통일 | ✅ | 06-15 |
+| 32.6 | SkillButton SetSelected → UIColors.A.Ornament 황금 강조 | ✅ | 06-15 |
+| 32.7 | SkillTreeNode 티어/해금/장착 색상 OT2 팔레트(BarAp·Ornament·BarHp) | ✅ | 06-15 |
+| 32.8 | SkillTreePanel 슬롯 정상/선택 색상 UIColors.A.PanelBg | ✅ | 06-15 |
+| 32.9 | ChapterHubUIBuilder OT2 팔레트 전환 + 씬·MissionSlot·SkillTreeNode 프리팹 재빌드 | ✅ | 06-15 |
+
+---
+
+## 33.0 ChapterHub 월드맵 레이아웃
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| 33.1 | WorldMapView — RawImage uvRect 줌/팬 코루틴, FocusOn/ResetView API | ✅ | 06-15 |
+| 33.2 | MissionSlotUI — IPointerEnter/Exit 호버 이벤트 + MapFocusUV/MapZoom 데이터 | ✅ | 06-15 |
+| 33.3 | StageConfig mapFocusUV/mapZoomLevel 필드 추가 | ✅ | 06-15 |
+| 33.4 | ChapterHubScreen 4분면 UV 자동 배정(ComputeQuadrantUV) + 호버→지도줌 연동 | ✅ | 06-15 |
+| 33.5 | ChapterHubUIBuilder 레이아웃 재구성 — 월드맵 좌65% / 임무목록 우35% | ✅ | 06-15 |
+| 33.6 | 비콘 링 펄스 애니메이션(CanvasGroup 알파+스케일) + MapVignette | ✅ | 06-15 |
+| 33.7 | 3D 핀 마커 — MkPin 헬퍼 + 10레이어(그림자/바늘/구체) 레이어드 구성 | ✅ | 06-15 |
