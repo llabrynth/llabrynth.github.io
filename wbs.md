@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-15 (월드맵 허브 레이아웃 + 3D 핀 마커)
+> 최종 업데이트: 2026-06-16 (SkillTreePanelBuilder Editor 빌더 신규 — OT2 스타일 + SetField 연결)
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -495,3 +495,74 @@ permalink: /wbs/
 | 33.5 | ChapterHubUIBuilder 레이아웃 재구성 — 월드맵 좌65% / 임무목록 우35% | ✅ | 06-15 |
 | 33.6 | 비콘 링 펄스 애니메이션(CanvasGroup 알파+스케일) + MapVignette | ✅ | 06-15 |
 | 33.7 | 3D 핀 마커 — MkPin 헬퍼 + 10레이어(그림자/바늘/구체) 레이어드 구성 | ✅ | 06-15 |
+
+---
+
+## 34.0 ChapterHub OT2 스타일 재설계 — A-1 레이아웃
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| 34.1 | MissionSlotUI _cornerDecor 필드 + 호버 SetActive 토글 | ✅ | 06-16 |
+| 34.2 | ChapterHubUIBuilder OT2 색상 팔레트 재편 (C_RPANEL/C_GOLD/C_SLOT_BG 등) | ✅ | 06-16 |
+| 34.3 | MkPanelLeftEdge 헬퍼 — 좌측 1px 금 라인 + 48px 그라디언트 블렌드 | ✅ | 06-16 |
+| 34.4 | MkSectionLabel 헬퍼 — ✦ TEXT ✦ 양쪽 금 라인 구분선 | ✅ | 06-16 |
+| 34.5 | MkCornerDecor 헬퍼 — L자 코너 장식 (H/V 두 Image) | ✅ | 06-16 |
+| 34.6 | WorldMapArea 전체 너비 확장 (anchorMax.x 0.65→1.0) | ✅ | 06-16 |
+| 34.7 | RightPanel 오버레이 배치 (anchorMin.x=0.64, #060e1af8 반투명) | ✅ | 06-16 |
+| 34.8 | 헤더 챕터번호/챕터명 두 줄 레이아웃 + 하단 금 라인 | ✅ | 06-16 |
+| 34.9 | 출격 버튼 4코너 금 L자 장식 항상 표시 | ✅ | 06-16 |
+| 34.10 | MissionSlot 프리팹 CornerDecor 자식 추가 + _cornerDecor 필드 연결 | ✅ | 06-16 |
+
+---
+
+## 35.0 UI 헬퍼 & 팝업 시스템
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **35** | **UI 공통 헬퍼 & OT2 팝업 시스템** | ✅ | 06-16 |
+| 35.1 | UIBuilderUtils — MkPopup/MkBar/MkCornerOrnaments/MkSectionLabel/MkLabel 헬퍼 | ✅ | 06-16 |
+| 35.2 | BattlePauseMenu OT2 스타일 팝업 재구성 | ✅ | 06-16 |
+| 35.3 | HubEscMenu OT2 스타일 팝업 재구성 | ✅ | 06-16 |
+| 35.4 | BattleUIBuilder TMP 마이그레이션 + 바 7px + 슬롯 border | ✅ | 06-16 |
+
+---
+
+## 36.0 SkillPanel OT2 컨테이너 스타일링
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **36** | **SkillPanel OT2 컨테이너 배경·border·장식** | ✅ | 06-16 |
+| 36.1 | SkillPanel BuildContainer() — HudBgDark 배경 + 코너 L장식 + 4px border 라인 | ✅ | 06-16 |
+
+---
+
+## 37.0 SkillButton OT2 스타일 업그레이드
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **37** | **SkillButton Build() 메서드 추가 — SerializeField 제거** | ✅ | 06-16 |
+| 37.1 | SkillButton.Build() 자체 UI 생성 (border/bg/아이콘/단축키/스킬명/AP비용/오버레이/Button) | ✅ | 06-16 |
+| 37.2 | SerializeField 6개 제거 → private 필드, Awake()에서 Build() 호출 | ✅ | 06-16 |
+| 37.3 | TMP_Text 마이그레이션 — UnityEngine.UI.Text → TextMeshProUGUI | ✅ | 06-16 |
+| 37.4 | UIColors 토큰 적용 — SkillBtnBorder/Bg/ActiveBorder/SkillLabelGold/SkillNameColor | ✅ | 06-16 |
+
+---
+
+## 38.0 BattleResultScreen OT2 업그레이드
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **38** | **BattleResultScreen BuildUI() 추가 — SerializeField 제거** | ✅ | 06-16 |
+| 38.1 | SerializeField 5개 제거 → private _ 필드 | ✅ | 06-16 |
+| 38.2 | BuildUI() — ResultCanvas + Dim 오버레이 + 중앙 패널 + L자 코너 장식 | ✅ | 06-16 |
+| 38.3 | VerticalLayoutGroup BG 내 MkSectionLabel/MkSeparator/MkLabel/MkPopupBtn 구성 | ✅ | 06-16 |
+| 38.4 | ShowResult() transform.Find("Panel") 제거 — GO 활성화만 수행 | ✅ | 06-16 |
+
+---
+
+## 39.0 SkillTreePanelBuilder Editor 빌더
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **39** | **SkillTreePanelBuilder Editor 빌더 신규** | ✅ | 06-16 |
+| 39.1 | SkillTreePanelBuilder.cs — OT2 스타일 빌드, SetField Reflection 연결 (탭 3개·덱 슬롯 3개·Tier 루트) | ✅ | 06-16 |
