@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-16 (SkillTreePanelBuilder Editor 빌더 신규 — OT2 스타일 + SetField 연결)
+> 최종 업데이트: 2026-06-17 (SkillButton 스킬명 비표시 수정 — LayoutElement + full-stretch rect)
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -566,3 +566,15 @@ permalink: /wbs/
 |----|--------|------|--------|
 | **39** | **SkillTreePanelBuilder Editor 빌더 신규** | ✅ | 06-16 |
 | 39.1 | SkillTreePanelBuilder.cs — OT2 스타일 빌드, SetField Reflection 연결 (탭 3개·덱 슬롯 3개·Tier 루트) | ✅ | 06-16 |
+
+---
+
+## 40.0 SkillPanel 레이아웃 버그 수정
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **40** | **SkillPanel 버튼·스킬명 표시 버그 수정** | ✅ | 06-17 |
+| 40.1 | SkillButton 아이콘 흰색 노출 수정 — `_iconImg.enabled=false` 기본값, preserveAspect=true | ✅ | 06-17 |
+| 40.2 | SkillPanel 높이 84px, Move/Wait 버튼 sizeDelta (80, 72)로 수정 | ✅ | 06-17 |
+| 40.3 | SkillPanel 앵커 (0.42,0)→(1.0,0) 변경 — 6개 버튼 공간 확보 및 HP 바 겹침 해소 | ✅ | 06-17 |
+| 40.4 | SkillButton LayoutElement 추가 + 스킬명 레이블 full-stretch rect 변경으로 스킬명 비표시 수정 | ✅ | 06-17 |
