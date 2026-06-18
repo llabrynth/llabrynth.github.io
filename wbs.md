@@ -6,7 +6,7 @@ permalink: /wbs/
 
 # RTwP RPG — WBS (Work Breakdown Structure)
 <!-- 이 파일은 CLAUDE.md 지침에 따라 작업 완료 시 자동 갱신됩니다 -->
-> 최종 업데이트: 2026-06-17 (SkillButton 스킬명 비표시 수정 — LayoutElement + full-stretch rect)
+> 최종 업데이트: 2026-06-19 (애니메이션 품질 버그 패치 — 깜박임 수정·패링 공격 모션)
 
 범례: ✅ 완료 | ⬜ 진행 예정
 
@@ -578,3 +578,40 @@ permalink: /wbs/
 | 40.2 | SkillPanel 높이 84px, Move/Wait 버튼 sizeDelta (80, 72)로 수정 | ✅ | 06-17 |
 | 40.3 | SkillPanel 앵커 (0.42,0)→(1.0,0) 변경 — 6개 버튼 공간 확보 및 HP 바 겹침 해소 | ✅ | 06-17 |
 | 40.4 | SkillButton LayoutElement 추가 + 스킬명 레이블 full-stretch rect 변경으로 스킬명 비표시 수정 | ✅ | 06-17 |
+
+---
+
+## 41.0 이펙트/유닛 분리 에셋 제거 — 원본 통합 스프라이트 복귀
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| 41.1 | CharacterData effectAnimatorController 필드 제거 | ✅ | 06-18 |
+| 41.2 | UnitController EffectLayer 동적 할당 코드 제거 | ✅ | 06-18 |
+| 41.3 | SpriteCharacterView _effectTickAnim/_effectRenderer 참조 제거 | ✅ | 06-18 |
+| 41.4 | TickSpriteAnimator SetLinked/_linked 이펙트 동기화 로직 제거 | ✅ | 06-18 |
+| 41.5 | OlbericAnimationBuilder _char/_effect 분기 제거 — 항상 원본 시트 사용 | ✅ | 06-18 |
+| 41.6 | Olberic_Attack.anim / Olberic_Skill.anim 원본 스프라이트로 재빌드 | ✅ | 06-18 |
+| 41.7 | PartyMember_Prefab EffectLayer 자식 오브젝트 제거 | ✅ | 06-18 |
+| 41.8 | OlbericEffectSeparator.cs / Effect_*.anim / Olberic_Effects_Animator / _char.png / _effect.png 삭제 | ✅ | 06-18 |
+
+---
+
+## 42.0 패링 동작 Standby 애니메이션 + Tressa 정리
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **42** | **패링 Standby 애니메이션 + Tressa 에셋 정리** | ✅ | 06-19 |
+| 42.1 | 패링 동작 Standby 애니메이션 — Olberic/Therion Standby 클립·상태 추가, StartParry에서 FreezeAtFirstFrame 재생 | ✅ | 06-18 |
+| 42.2 | Tressa Standby 상태·클립 제거 + AddStandbyAnimation.cs Tressa 항목 제외 | ✅ | 06-19 |
+
+---
+
+## 43.0 애니메이션 품질 버그 패치
+
+| ID | 산출물 | 상태 | 완료일 |
+|----|--------|------|--------|
+| **43** | **애니메이션 품질 버그 4건 수정** | ✅ | 06-19 |
+| 43.1 | Olberic CharacterData animatorController null 참조 복구 — OlbericAnimationBuilder 재빌드 후 Unity 에셋 DB stale, SaveAssets() 재로드로 해결 | ✅ | 06-19 |
+| 43.2 | 비루핑 클립 깜박임 수정 — SampleCurrent `_elapsed % clip.length` → `Mathf.Min(_elapsed, clip.length)` 클램핑 | ✅ | 06-19 |
+| 43.3 | 패링 성공 시 방어자 Attack 애니메이션 재생 — ApplySkillEffect / ApplyDirectionalEffect isParried 블록에 `target.View?.PlayAnimation(Attack)` 추가 | ✅ | 06-19 |
+| 43.4 | 일시정지 중 Idle 깜박임 수정 — TickSpriteAnimator LateUpdate에서 루핑 클립을 unscaledDeltaTime으로 실시간 재생 | ✅ | 06-19 |
