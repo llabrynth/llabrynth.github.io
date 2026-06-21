@@ -6,6 +6,18 @@
     "type": "video"
   },
   {
+    "name": "RTwP_RPG 최종발표자료.pptx",
+    "path": "RTwP_RPG 최종발표자료.pptx",
+    "size": 109359,
+    "type": "other"
+  },
+  {
+    "name": "WBS_Standard.md",
+    "path": "WBS_Standard.md",
+    "size": 17523,
+    "type": "md"
+  },
+  {
     "name": "rtwp_battle_loop.md",
     "path": "rtwp_battle_loop.md",
     "size": 1093,
@@ -28,6 +40,12 @@
     "path": "wbs.md",
     "size": 40464,
     "type": "md"
+  },
+  {
+    "name": "시연 데모영상.mp4",
+    "path": "시연 데모영상.mp4",
+    "size": 21054754,
+    "type": "video"
   },
   {
     "name": "앱프로그래밍응용 중간발표.pdf",
